@@ -1,12 +1,8 @@
-// Update for the current lesson
-const lessonFolder = '10-debug-ui'
-
 const isCodeSandbox = 'SANDBOX_URL' in process.env || 'CODESANDBOX_HOST' in process.env
 
 export default {
-    // Update for the current lesson
-    root: `${lessonFolder}/src/`,
-    publicDir: `${lessonFolder}/static/`,
+    root: 'src/',
+    publicDir: '../static/',
     base: './',
     server:
     {
