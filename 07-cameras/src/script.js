@@ -1,8 +1,16 @@
 import * as THREE from 'three'
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js'
 
-/**
- * Cursor
- */
+// Canvas
+const canvas = document.querySelector('canvas.webgl')
+
+// Sizes
+const sizes = {
+    width: 800,
+    height: 600
+}
+
+// Cursor
 const cursor = {
     x: 0,
     y: 0
@@ -14,18 +22,6 @@ window.addEventListener('mousemove', (event) => {
     cursor.y = -(event.clientY / sizes.height - 0.5)
 })
 
-/**
- * Base
- */
-// Canvas
-const canvas = document.querySelector('canvas.webgl')
-
-// Sizes
-const sizes = {
-    width: 800,
-    height: 600
-}
-
 // Scene
 const scene = new THREE.Scene()
 
@@ -36,17 +32,23 @@ const mesh = new THREE.Mesh(
 )
 scene.add(mesh)
 
-const aspectRatio = sizes.width / sizes.height
-
 // Camera
+const aspectRatio = sizes.width / sizes.height
 const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 100)
 // const camera = new THREE.OrthographicCamera(-1 * aspectRatio, 1 * aspectRatio, 1, -1, 0.1, 100)
 
 // camera.position.x = 2
 // camera.position.y = 2
 camera.position.z = 3
-camera.lookAt(mesh.position)
 scene.add(camera)
+
+// Controls
+const controls = new OrbitControls(camera, canvas)
+
+// controls.target.y = 1
+// controls.update()
+
+controls.enableDamping = true
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -59,7 +61,7 @@ const clock = new THREE.Clock()
 
 const tick = () =>
 {
-    const elapsedTime = clock.getElapsedTime()
+    // const elapsedTime = clock.getElapsedTime()
 
     // Update objects
     // mesh.rotation.y = elapsedTime;
@@ -79,6 +81,9 @@ const tick = () =>
 
     // // can technically also use new THREE.Vector3(), but would create a new vector every frame
     // camera.lookAt(mesh.position)
+
+    // Update controls
+    controls.update()
 
     // Render
     renderer.render(scene, camera)
