@@ -1,0 +1,12 @@
+/* remove outline and scrollbar */
+.webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+/* prevent scroll */
+html, body {
+    overflow: hidden;
+}
