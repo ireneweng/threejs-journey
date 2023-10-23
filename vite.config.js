@@ -1,20 +1,19 @@
 // Update for the current lesson
-const lessonFolder = "11-textures"
+const lessonFolder = "12-materials"
 const isCodeSandbox =
-  "SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env
+    "SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env
 
 export default {
-  // Update for the current lesson
-  root: lessonFolder,
-  publicDir: "static",
-  base: "./",
-  server: {
-    host: true,
-    open: !isCodeSandbox, // Open if it's not a CodeSandbox
-  },
-  build: {
-    outDir: "../dist",
-    emptyOutDir: true,
-    sourcemap: true,
-  },
+    root: lessonFolder,
+    publicDir: "static",
+    base: "./",
+    server: {
+        host: true,
+        open: !isCodeSandbox, // Open if it's not a CodeSandbox
+    },
+    build: {
+        outDir: "../dist",
+        emptyOutDir: true,
+        sourcemap: true,
+    },
 }
