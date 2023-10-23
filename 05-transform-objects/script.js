@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import * as THREE from "three"
 
 // scene
 const scene = new THREE.Scene()
@@ -18,28 +18,30 @@ const scene = new THREE.Scene()
 // mesh.rotation.x = Math.PI * 0.25
 // mesh.rotation.y = Math.PI * 0.25
 
-const group = new  THREE.Group()
+const group = new THREE.Group()
 group.scale.y = 2
 group.rotation.y = 1
 scene.add(group)
 
 const cube1 = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({color: 0xff0000}))
+    new THREE.MeshBasicMaterial({ color: 0xff0000 })
+)
 group.add(cube1)
 
 const cube2 = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({color: 0x00ff00}))
+    new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+)
 group.add(cube2)
 cube2.position.x = -1.5
 
 const cube3 = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({color: 0x0000ff}))
+    new THREE.MeshBasicMaterial({ color: 0x0000ff })
+)
 group.add(cube3)
 cube3.position.x = 1.5
-
 
 // axes helper
 const axes_helper = new THREE.AxesHelper(2)
@@ -52,7 +54,7 @@ scene.add(axes_helper)
 
 const sizes = {
     width: 800,
-    height: 600
+    height: 600,
 }
 
 // camera
@@ -71,7 +73,7 @@ scene.add(camera)
 const canvas = document.querySelector(".webgl")
 const renderer = new THREE.WebGLRenderer({
     // if property is exact same name as var, can remove : canvas
-    canvas: canvas
+    canvas: canvas,
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)

@@ -1,8 +1,8 @@
-import * as THREE from 'three'
-import gsap from 'gsap'
+import * as THREE from "three"
+import gsap from "gsap"
 
 // Canvas
-const canvas = document.querySelector('canvas.webgl')
+const canvas = document.querySelector("canvas.webgl")
 
 // Scene
 const scene = new THREE.Scene()
@@ -16,7 +16,7 @@ scene.add(mesh)
 // Sizes
 const sizes = {
     width: 800,
-    height: 600
+    height: 600,
 }
 
 // Camera
@@ -26,7 +26,7 @@ scene.add(camera)
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+    canvas: canvas,
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
@@ -53,7 +53,7 @@ const tick = () => {
     // // update objects
     // mesh.position.x += 0.01
     // mesh.position.y += 0.01
-    
+
     // // using delta
     // mesh.rotation.y += 0.001 * delta_time
 

@@ -1,21 +1,21 @@
-import * as THREE from 'three'
-import {OrbitControls} from 'three/addons/controls/OrbitControls.js'
+import * as THREE from "three"
+import { OrbitControls } from "three/addons/controls/OrbitControls.js"
 
 // Canvas
-const canvas = document.querySelector('canvas.webgl')
+const canvas = document.querySelector("canvas.webgl")
 
 // Sizes
 const sizes = {
     width: 800,
-    height: 600
+    height: 600,
 }
 
 // Cursor
 const cursor = {
     x: 0,
-    y: 0
+    y: 0,
 }
-window.addEventListener('mousemove', (event) => {
+window.addEventListener("mousemove", (event) => {
     // console.log(event.clientX, event.clientY)
 
     cursor.x = event.clientX / sizes.width - 0.5
@@ -52,15 +52,14 @@ controls.enableDamping = true
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+    canvas: canvas,
 })
 renderer.setSize(sizes.width, sizes.height)
 
 // Animate
 const clock = new THREE.Clock()
 
-const tick = () =>
-{
+const tick = () => {
     // const elapsedTime = clock.getElapsedTime()
 
     // Update objects

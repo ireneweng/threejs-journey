@@ -1,7 +1,7 @@
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import gsap from 'gsap'
-import GUI from 'lil-gui'
+import * as THREE from "three"
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
+import gsap from "gsap"
+import GUI from "lil-gui"
 
 /**
  * Debug
@@ -11,16 +11,18 @@ const gui = new GUI()
 const parameters = {
     color: 0xff0000,
     spin: () => {
-        gsap.to(mesh.rotation, {y: mesh.rotation.y + Math.PI * 2, duration: 1}
-            )
-    }
+        gsap.to(mesh.rotation, {
+            y: mesh.rotation.y + Math.PI * 2,
+            duration: 1,
+        })
+    },
 }
 
 /**
  * Base
  */
 // Canvas
-const canvas = document.querySelector('canvas.webgl')
+const canvas = document.querySelector("canvas.webgl")
 
 // Scene
 const scene = new THREE.Scene()
@@ -33,34 +35,29 @@ const material = new THREE.MeshBasicMaterial({ color: parameters.color })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
-gui
-    .add(mesh.position, 'y')
-    .min(-3).max(3)
-    .step(0.01)
+gui.add(mesh.position, "y").min(-3).max(3).step(0.01)
 
-gui.add(mesh, 'visible')
-gui.add(material, 'wireframe')
+gui.add(mesh, "visible")
+gui.add(material, "wireframe")
 
 // gui
 //     .addColor(parameters, 'color')
 //     .onChange(() => {
 //         material.color.set(parameters.color)
 //     })
-gui.addColor(material, 'color')
+gui.addColor(material, "color")
 
-gui.add(parameters, 'spin')
-
+gui.add(parameters, "spin")
 
 /**
  * Sizes
  */
 const sizes = {
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
 }
 
-window.addEventListener('resize', () =>
-{
+window.addEventListener("resize", () => {
     // Update sizes
     sizes.width = window.innerWidth
     sizes.height = window.innerHeight
@@ -78,7 +75,12 @@ window.addEventListener('resize', () =>
  * Camera
  */
 // Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+const camera = new THREE.PerspectiveCamera(
+    75,
+    sizes.width / sizes.height,
+    0.1,
+    100
+)
 camera.position.z = 3
 scene.add(camera)
 
@@ -90,7 +92,7 @@ controls.enableDamping = true
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+    canvas: canvas,
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -100,8 +102,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
  */
 const clock = new THREE.Clock()
 
-const tick = () =>
-{
+const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
     // Update controls
