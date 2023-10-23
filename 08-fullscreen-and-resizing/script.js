@@ -1,11 +1,11 @@
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import * as THREE from "three"
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 
 /**
  * Base
  */
 // Canvas
-const canvas = document.querySelector('canvas.webgl')
+const canvas = document.querySelector("canvas.webgl")
 
 // Scene
 const scene = new THREE.Scene()
@@ -23,11 +23,11 @@ scene.add(mesh)
  */
 const sizes = {
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
 }
 const aspectRatio = sizes.width / sizes.height
 
-window.addEventListener('resize', () => {
+window.addEventListener("resize", () => {
     sizes.width = window.innerWidth
     sizes.height = window.innerHeight
 
@@ -38,13 +38,12 @@ window.addEventListener('resize', () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
-window.addEventListener('dblclick', () => {
+window.addEventListener("dblclick", () => {
     if (!document.fullscreenElement) {
-        console.log('go fullscreen')
+        console.log("go fullscreen")
         canvas.requestFullscreen()
-    }
-    else {
-        console.log('leave it')
+    } else {
+        console.log("leave it")
         document.exitFullscreen()
     }
 })
@@ -65,7 +64,7 @@ controls.enableDamping = true
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+    canvas: canvas,
 })
 renderer.setSize(sizes.width, sizes.height)
 
@@ -74,8 +73,7 @@ renderer.setSize(sizes.width, sizes.height)
  */
 const clock = new THREE.Clock()
 
-const tick = () =>
-{
+const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
     // Update controls
