@@ -5,8 +5,8 @@ const isCodeSandbox =
 
 export default {
   // Update for the current lesson
-  root: `${lessonFolder}/src`,
-  publicDir: `../static`,
+  root: lessonFolder,
+  publicDir: "static",
   base: "./",
   server: {
     host: true,
