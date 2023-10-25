@@ -1,7 +1,13 @@
 import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
+import GUI from "lil-gui"
 
 THREE.ColorManagement.enabled = false
+
+/**
+ * Debug
+ */
+const gui = new GUI()
 
 /**
  * Textures
@@ -9,12 +15,25 @@ THREE.ColorManagement.enabled = false
 const textureLoader = new THREE.TextureLoader()
 const color = textureLoader.load("/textures/door/color.jpg")
 const alpha = textureLoader.load("/textures/door/alpha.jpg")
+const ambOccl = textureLoader.load("/textures/door/ambientOcclusion.jpg")
 const height = textureLoader.load("/textures/door/height.jpg")
 const normal = textureLoader.load("/textures/door/normal.jpg")
 const metallic = textureLoader.load("/textures/door/metalness.jpg")
 const roughness = textureLoader.load("/textures/door/roughness.jpg")
 const gradient = textureLoader.load("/textures/gradients/3.jpg")
 const matcap = textureLoader.load("/textures/matcaps/2.png")
+
+gradient.minFilter = THREE.NearestFilter
+gradient.magFilter = THREE.NearestFilter
+
+const cubeTexLoader = new THREE.CubeTextureLoader()
+
+const envTextures = ["px", "nx", "py", "ny", "pz", "nz"]
+const envTexturePaths = []
+for (let i = 0; i < 6; i++) {
+    envTexturePaths[i] = `/textures/environmentMaps/1/${envTextures[i]}.jpg`
+}
+const envMap = cubeTexLoader.load(envTexturePaths)
 
 /**
  * Base
@@ -24,6 +43,16 @@ const canvas = document.querySelector("canvas.webgl")
 
 // Scene
 const scene = new THREE.Scene()
+
+/**
+ * Lights
+ */
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
+scene.add(ambientLight)
+
+const pointLight = new THREE.PointLight(0xffffff, 0.5)
+pointLight.position.set(2, 3, 4)
+scene.add(pointLight)
 
 /**
  * Objects
@@ -39,13 +68,45 @@ const scene = new THREE.Scene()
 // const material = new THREE.MeshNormalMaterial()
 // material.flatShading = true
 
-const material = new THREE.MeshMatcapMaterial()
-material.matcap = matcap
+// const material = new THREE.MeshMatcapMaterial()
+// material.matcap = matcap
 
-const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5, 10, 10), material)
-const plane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), material)
+// const material = new THREE.MeshDepthMaterial()
+
+// const material = new THREE.MeshPhongMaterial()
+// material.shininess = 100
+// material.specular = new THREE.Color(0x131442)
+
+// const material = new THREE.MeshToonMaterial()
+// material.gradientMap = gradient
+
+// const material = new THREE.MeshStandardMaterial()
+// material.map = color
+// material.aoMap = ambOccl
+// material.aoMapIntensity = 1
+// material.displacementMap = height
+// material.displacementScale = 0.05
+// material.metalnessMap = metallic
+// material.roughnessMap = roughness
+// material.normalMap = normal
+// material.normalScale.set(0.5, 0.5)
+// material.transparent = true
+// material.alphaMap = alpha
+
+const material = new THREE.MeshStandardMaterial()
+material.metalness = 1
+material.roughness = 0
+material.envMap = envMap
+
+gui.add(material, "metalness").min(0).max(1)
+gui.add(material, "roughness").min(0).max(1)
+gui.add(material, "aoMapIntensity").min(0).max(5)
+gui.add(material, "displacementScale").min(0).max(1)
+
+const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5, 64, 64), material)
+const plane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, 100, 100), material)
 const torus = new THREE.Mesh(
-    new THREE.TorusGeometry(0.3, 0.2, 16, 32),
+    new THREE.TorusGeometry(0.3, 0.2, 64, 128),
     material
 )
 
