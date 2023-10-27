@@ -13,15 +13,15 @@ const gui = new GUI()
  * Textures
  */
 const textureLoader = new THREE.TextureLoader()
-const color = textureLoader.load("/textures/door/color.jpg")
-const alpha = textureLoader.load("/textures/door/alpha.jpg")
-const ambOccl = textureLoader.load("/textures/door/ambientOcclusion.jpg")
-const height = textureLoader.load("/textures/door/height.jpg")
-const normal = textureLoader.load("/textures/door/normal.jpg")
-const metallic = textureLoader.load("/textures/door/metalness.jpg")
-const roughness = textureLoader.load("/textures/door/roughness.jpg")
-const gradient = textureLoader.load("/textures/gradients/3.jpg")
-const matcap = textureLoader.load("/textures/matcaps/2.png")
+const color = textureLoader.load("textures/door/color.jpg")
+const alpha = textureLoader.load("textures/door/alpha.jpg")
+const ambOccl = textureLoader.load("textures/door/ambientOcclusion.jpg")
+const height = textureLoader.load("textures/door/height.jpg")
+const normal = textureLoader.load("textures/door/normal.jpg")
+const metallic = textureLoader.load("textures/door/metalness.jpg")
+const roughness = textureLoader.load("textures/door/roughness.jpg")
+const gradient = textureLoader.load("textures/gradients/3.jpg")
+const matcap = textureLoader.load("textures/matcaps/2.png")
 
 gradient.minFilter = THREE.NearestFilter
 gradient.magFilter = THREE.NearestFilter
@@ -31,7 +31,7 @@ const cubeTexLoader = new THREE.CubeTextureLoader()
 const envTextures = ["px", "nx", "py", "ny", "pz", "nz"]
 const envTexturePaths = []
 for (let i = 0; i < 6; i++) {
-    envTexturePaths[i] = `/textures/environmentMaps/1/${envTextures[i]}.jpg`
+    envTexturePaths[i] = `textures/environmentMaps/1/${envTextures[i]}.jpg`
 }
 const envMap = cubeTexLoader.load(envTexturePaths)
 
