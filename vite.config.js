@@ -1,5 +1,5 @@
 // Update for the current lesson
-const lessonFolder = "16-shadows"
+const lessonFolder = "15-shadows"
 const isCodeSandbox =
     "SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env
 
