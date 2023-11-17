@@ -1,10 +1,8 @@
-// Update for the current lesson
-const lessonFolder = "18-galaxy-generator"
 const isCodeSandbox =
     "SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env
 
 export default {
-    root: lessonFolder,
+    root: "./",
     publicDir: "static",
     base: "./",
     server: {
@@ -12,7 +10,7 @@ export default {
         open: !isCodeSandbox, // Open if it's not a CodeSandbox
     },
     build: {
-        outDir: "../dist",
+        outDir: "dist",
         emptyOutDir: true,
         sourcemap: true,
     },
