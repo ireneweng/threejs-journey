@@ -1,5 +1,5 @@
 // Update for the current lesson
-const lessonFolder = "20-physics"
+const lessonFolder = "21-imported-models"
 const isCodeSandbox =
     "SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env
 
