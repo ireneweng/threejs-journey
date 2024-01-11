@@ -1,5 +1,5 @@
 // Update for the current lesson
-const lessonFolder = "22-raycaster-and-mouse-events"
+const lessonFolder = "24-environment-map"
 const isCodeSandbox =
     "SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env
 
