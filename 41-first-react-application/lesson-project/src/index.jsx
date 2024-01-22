@@ -22,5 +22,17 @@ root.render(
     //     <input type="checkbox" id="my-checkbox" />
     //     <label htmlFor="my-checkbox">My Checkbox</label>
     // </>
-    <App />
+    <>
+    <App numClickers = {3}>
+        <h1>My First React App</h1>
+        <h2>My little subtitle</h2>
+    </App>
+    {/* <App numClickers = {3} children={
+        <>
+            <h1>My First React App</h1>
+            <h2>My little subtitle</h2>
+        </>
+        }
+    /> */}
+    </>
 )
