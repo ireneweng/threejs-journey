@@ -10,8 +10,14 @@ export default function Experience() {
     const cubeRef = useRef()
     const carouselGroup = useRef()
     useFrame((state, delta) => {
+        // const radius = 8
+        // const angle = state.clock.elapsedTime
+        // state.camera.position.x = Math.sin(angle) * radius
+        // state.camera.position.z = Math.cos(angle) * radius
+        // state.camera.lookAt(0,0,0)
+
         cubeRef.current.rotation.y += delta
-        carouselGroup.current.rotation.y += delta
+        // carouselGroup.current.rotation.y += delta
     })
 
     return <>
